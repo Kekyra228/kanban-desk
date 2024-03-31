@@ -1,31 +1,55 @@
-function Header() {
+import { useState } from "react"
+import { HeaderBlock, HeaderBtnMain, HeaderMain, HeaderNav, HeaderPopUserSet, HeaderUser, UserButton, UserMail, UserThemInput, UserTheme } from "./Header.styled"
+import { Container } from "../Common.styled"
+
+
+function Header({tasksList, setTasksList}) {
+
+
+const [isOpen, setOpen] = useState(false)
+const OpenUser =()=>{
+	setOpen ((isOpen)=>!isOpen)
+}
+
+		function addTask() {
+			const newTask = { 
+				id: tasksList.length+1,
+				theme:"No name",
+				name: "Новая задача", 
+				date:"01.01.24",
+				status:"Без статуса"
+				}
+			setTasksList([...tasksList, newTask])
+		}
+
     return (
-        <header className="header">
-			<div className="container">
-				<div className="header__block">
-					<div className="header__logo _show _light">
+     <HeaderMain>
+		<Container>
+		<HeaderBlock>
+				<div className="header__logo _show _light">
 						<a href="" target="_self"><img src="images/logo.png" alt="logo"></img></a>
 					</div>
 					<div className="header__logo _dark">
 						<a href="" target="_self"><img src="images/logo_dark.png" alt="logo"></img></a>
 					</div>
-					<nav className="header__nav">
-						<button className="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
-						<a href="#user-set-target" className="header__user _hover02">Ivan Ivanov</a>
-						<div className="header__pop-user-set pop-user-set" id="user-set-target">
-							
-							<p className="pop-user-set__name">Ivan Ivanov</p>
-							<p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-							<div className="pop-user-set__theme">
+					<HeaderNav>
+					<HeaderBtnMain onClick={addTask}  id="btnMainNew">Создать новую задачу</HeaderBtnMain>
+						<HeaderUser onClick={OpenUser} href="#user-set-target">Ivan Ivanov</HeaderUser>
+						{isOpen && 
+						<HeaderPopUserSet>
+							<p>Ivan Ivanov</p>
+							<UserMail>ivan.ivanov@gmail.com</UserMail>
+							<UserTheme>
 								<p>Темная тема</p>
-								<input type="checkbox" className="checkbox" name="checkbox"></input>
-							</div>
-							<button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
-						</div>
-					</nav>					
-				</div>
-			</div>			
-		</header>
+								<UserThemInput></UserThemInput>
+							</UserTheme>
+							<UserButton><a href="#popExit">Выйти</a></UserButton>
+						</HeaderPopUserSet>
+						}
+					</HeaderNav>
+				</HeaderBlock>
+		</Container>
+	 </HeaderMain>
     )
 }
 

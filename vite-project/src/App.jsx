@@ -5,19 +5,35 @@ import CreatedTask from './components/createdTask/CreatedTask'
 import DataTask from './components/dataAboutTasks/DataTasks'
 import Header from './components/header/Header'
 import MainBlock from './components/mainBlock/MainBlock'
-import CalendarContent from './components/calendar/Calendar'
-import CardInfo from './components/mainBlock/CardInfo'
+import { tasks } from './data'
+import { useEffect } from 'react'
+import { GlobalStyle } from './components/Global.styled'
 
 function App() {
+
+const [tasksList, setTasksList] = useState(tasks)
+
+const [isLoading, setIsLoading] = useState(true)
+
+useEffect(()=>{
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 1000);
+}
+,[])
+
   return (
     <>
-      <Header/>
+
+      <GlobalStyle />
+      <Header setTasksList={setTasksList}tasksList={tasksList}/>
       <IsExit/>
       <CreatedTask/>
       <DataTask/>
-      <MainBlock/>
-      
+     <MainBlock tasksList={tasksList} isLoading={isLoading} />
+
    </>
+
   )
 }
 
