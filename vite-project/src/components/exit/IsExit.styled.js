@@ -10,6 +10,9 @@ export const PopExit = styled.div`
   top: 0;
   left: 0;
   z-index: 5;
+  &:target {
+    display: block;
+  }
 `
 
 export const ExitContainer = styled.div`
@@ -46,6 +49,9 @@ export const ExitTtl = styled.div`
   margin-bottom: 20px;
 }
 `
+
+export const ExitForm = styled.form``
+
 
 export const ExitFormGroup = styled.div`
   width: 100%;
