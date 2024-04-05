@@ -2,6 +2,7 @@ import { useState } from "react";
 import Columns from "./Columns";
 import { MainContainer, MainBlockWithContent, MainContent } from "./Main.styled";
 import { Container } from "../Common.styled";
+import Header from "../header/Header";
 
 
 
@@ -14,11 +15,13 @@ const statusList = [
 ];
 
 
-function MainBlock({ tasksList, isLoading }) {
+function MainBlock({ tasksList, isLoading, setTasksList }) {
 
 	return (
 
+
 		<MainContainer>
+			<Header tasksList={tasksList} setTasksList={setTasksList}/>
 			<Container>
 			<MainBlockWithContent>
 					<MainContent>

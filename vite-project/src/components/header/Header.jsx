@@ -2,6 +2,8 @@ import { useState } from "react"
 import { HeaderBlock, HeaderBtnMain, HeaderMain, HeaderNav, HeaderPopUserSet, HeaderUser, UserButton, UserMail, UserThemInput, UserTheme } from "./Header.styled"
 import { Container } from "../Common.styled"
 import IsExit from "../exit/IsExit"
+import { Link } from "react-router-dom"
+import { paths } from "../../lib/constsns"
 
 
 function Header({tasksList, setTasksList}) {
@@ -34,9 +36,9 @@ const OpenExitWindow = () => {
 		<Container>
 		<HeaderBlock>
 				<div className="header__logo _show _light">
-					<a href="" target="_self">
+					<Link to={paths.MAIN}>
 						<img src="/logo.png" alt="logo" />
-					</a>
+					</Link>
 				</div>
 					{/* <div className="header__logo _dark">
 						<a href="" target="_self"><img src="images/logo_dark.png" alt="logo"></img></a>
@@ -56,7 +58,7 @@ const OpenExitWindow = () => {
 								<p>Темная тема</p>
 								<UserThemInput></UserThemInput>
 							</UserTheme>
-							<UserButton> <a href="#popExit">Выйти</a></UserButton>
+							<UserButton> <Link to={paths.EXIT}>Выйти</Link></UserButton>
 						</HeaderPopUserSet>
 						}
 					</HeaderNav>

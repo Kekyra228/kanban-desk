@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom"
 import { ExitBlock, ExitButtonNo, ExitButtonYes, ExitContainer, ExitForm, ExitFormGroup, ExitTtl, PopExit } from "./IsExit.styled"
+import { paths } from "../../lib/constsns"
 
 function IsExit() {
     return (
@@ -11,8 +13,8 @@ function IsExit() {
 				
 						<ExitForm>
 						<ExitFormGroup>
-								<ExitButtonYes><a href="modal/signin.html">Да, выйти</a></ExitButtonYes>
-								<ExitButtonNo><a href="main.html">Нет, остаться</a> </ExitButtonNo>
+								<ExitButtonYes><Link to={paths.LOGIN}>Да, выйти</Link></ExitButtonYes>
+								<ExitButtonNo><Link to ={paths.MAIN}>Нет, остаться</Link> </ExitButtonNo>
 							</ExitFormGroup>
 						</ExitForm>
 					

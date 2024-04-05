@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom"
 import { CardContainer, CardContent, CardGroup, CardItem, CardTheme, CardDate, CardsCard, CardButton, CardTitle } from "./Cards.styled"
 
 
 
 
-function Cards({theme, name, date}) {
+function Cards({theme, name, date, id}) {
 
 //     function colorTheme(theme) {
 //         if (theme==="Research"){
@@ -30,18 +31,19 @@ function Cards({theme, name, date}) {
                 <CardTheme  $theme={theme}>
                 <p> {theme}</p>
                 </CardTheme>
-                    <a href="#popBrowse" target="_self">
-                        <CardButton>
+                    <Link to={`/card/${id}`}>
+                    <CardButton>
                             <div></div>
                             <div></div>
                             <div></div>
                         </CardButton>
-                    </a>
+                    </Link>
+                  
                </CardGroup>
                <CardContent>
-               <a href="" target="_blank">
+               
                        <CardTitle>{name}</CardTitle>
-                    </a>
+                    
                    <CardDate>
                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <g clipPath="url(#clip0_1_415)">
