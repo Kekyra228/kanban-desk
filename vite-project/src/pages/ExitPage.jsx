@@ -3,7 +3,7 @@ import IsExit from '../components/exit/IsExit'
 
 const ExitPage = () => {
   return (
-    <IsExit/>
+    <IsExit />
   )
 }
 

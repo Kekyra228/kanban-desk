@@ -3,6 +3,14 @@ import { ExitBlock, ExitButtonNo, ExitButtonYes, ExitContainer, ExitForm, ExitFo
 import { paths } from "../../lib/constsns"
 
 function IsExit() {
+
+// 	const navigate = useNavigate()
+
+// 	function exit() {
+//     setIsAuth(true)
+//     navigate(paths.LOGIN)
+// }
+
     return (
        <PopExit  id="popExit">
 		<ExitContainer>
