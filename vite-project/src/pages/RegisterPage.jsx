@@ -1,9 +1,13 @@
 import React from 'react'
 import Register from '../components/register/Register'
 
-const RegisterPage = () => {
+const RegisterPage = ({setName,setLogin,setPassword}) => {
+
+
+
+
   return (
-    <Register/>
+    <Register setName={setName} setPassword={setPassword} setLogin={setLogin}/>
   )
 }
 

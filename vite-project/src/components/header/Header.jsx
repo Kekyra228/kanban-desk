@@ -16,9 +16,9 @@ const OpenUser =()=>{
 
 		function addTask() {
 			const newTask = { 
-				id: tasksList.length+1,
-				theme:"No name",
-				name: "Новая задача", 
+				_id: tasksList.length+1,
+				topic:"No name",
+				title: "Новая задача", 
 				date:"01.01.24",
 				status:"Без статуса"
 				}
