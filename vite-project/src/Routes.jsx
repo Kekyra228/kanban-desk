@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { paths } from './lib/constsns'
 import MainPage from './pages/MainPage'
 import RegisterPage from './pages/RegisterPage'
@@ -13,12 +13,21 @@ const AppRoutes = () => {
 
  const [isAuth, setIsAuth] = useState(false)
 
+const navigate = useNavigate()
+
+ const [user, setUser] = useState(null)
+ 
+ function createUser (newUser) {
+    setUser(newUser)
+    navigate(paths.MAIN)
+ }
+
     return (
         <>
             <Routes>
 
                 <Route element={<PrivateRoutes isAuth={isAuth}/>}>
-                    <Route path={paths.MAIN} element={<MainPage />}>
+                    <Route path={paths.MAIN} element={<MainPage user={user}/>}>
 
                         <Route path={paths.EXIT} element={<ExitPage />} /> 
                         <Route path={paths.CARD} element={<CardPage />} /> 
@@ -28,8 +37,8 @@ const AppRoutes = () => {
 
         
                 <Route path={paths.ERROR} element={<NotFoundPage />} />
-                <Route path={paths.LOGIN} element={<LoginPage setIsAuth={setIsAuth}/>} />
-                <Route path={paths.REGISTER} element={<RegisterPage />} />
+                <Route path={paths.LOGIN} element={<LoginPage  createUser={createUser} setIsAuth={setIsAuth}/>} />
+                <Route path={paths.REGISTER} element={<RegisterPage createUser={createUser}/>} />
 
             </Routes>
         </>

@@ -16,7 +16,7 @@ const statusList = [
 ];
 
 
-function MainBlock({ tasksList, isLoading, setTasksList, showError }) {
+function MainBlock({ tasksList, isLoading, setTasksList, showError, user }) {
 
 
 

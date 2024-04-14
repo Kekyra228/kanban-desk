@@ -4,7 +4,7 @@ import { tasks } from '../data'
 import { Outlet } from 'react-router-dom'
 import { getTodoes } from '../api'
 
-const MainPage = () => {
+const MainPage = ({user}) => {
     
     const [tasksList, setTasksList] = useState([])
 
@@ -26,7 +26,7 @@ const MainPage = () => {
 
   return (
         <>
-          <MainBlock tasksList={tasksList} isLoading={isLoading} setTasksList={setTasksList} showError={showError}/>
+          <MainBlock tasksList={tasksList} isLoading={isLoading} setTasksList={setTasksList} showError={showError} user={user}/>
           <Outlet />
         </>
   

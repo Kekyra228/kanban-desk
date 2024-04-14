@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { paths } from '../../lib/constsns'
 import { authorize } from '../../api'
 
-const Register = () => {
+const Register = ({createUser}) => {
 
 const [name, setName] = useState("")
 const [login, setLogin] = useState("")
@@ -24,7 +24,7 @@ const [password, setPassword] = useState("")
 const handleSubmit = async (event) => {
 	event.preventDefault();
 
-	await authorize({name,login,password}).then((data)=>{console.log(data)})
+	await authorize({name,login,password}).then((data)=>{createUser(data.user)})
 
   }
 
