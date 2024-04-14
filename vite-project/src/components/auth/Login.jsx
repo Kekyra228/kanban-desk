@@ -7,22 +7,21 @@ import { useState } from "react"
 
 function Login({setIsAuth, createUser}) {
 
-    const [userLogin, setUserLogin] = useState("")
+    const [login, setUserLogin] = useState("")
     const [password, setPassword] = useState("")
 
     const loginUser = async (event) => {
         event.preventDefault();
-    
-        await logon({login,password}).then((data)=>{createUser(data.user)})
+        await logon({ login, password}).then((data)=>{createUser(data.user)})
     
       }
     
-const navigate = useNavigate()
+// const navigate = useNavigate()
 
-function login() {
-    setIsAuth(true)
-    navigate(paths.MAIN)
-}
+// function login() {
+//     setIsAuth(true)
+//     navigate(paths.MAIN)
+// }
 
     return (
         <>
@@ -39,7 +38,7 @@ function login() {
                             name="login" 
                             id="formlogin"
                             placeholder="Эл. почта"
-                            value={userLogin}
+                            value={login}
                             onChange={(e)=>setUserLogin(e.target.value)}>
                         </ModalInput>
 
