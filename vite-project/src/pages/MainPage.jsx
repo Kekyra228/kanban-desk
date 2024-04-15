@@ -26,7 +26,7 @@ const MainPage = ({user}) => {
 
   return (
         <>
-          <MainBlock tasksList={tasksList} isLoading={isLoading} setTasksList={setTasksList} showError={showError} user={user}/>
+          <MainBlock tasksList={tasksList} isLoading={isLoading} setTasksList={setTasksList} showError={showError} user={user} />
           <Outlet />
         </>
   

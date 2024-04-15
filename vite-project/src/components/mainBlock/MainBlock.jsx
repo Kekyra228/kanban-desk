@@ -23,7 +23,7 @@ function MainBlock({ tasksList, isLoading, setTasksList, showError, user }) {
 	return (
 
 		<MainContainer>
-			<Header tasksList={tasksList} setTasksList={setTasksList}/>
+			<Header tasksList={tasksList} setTasksList={setTasksList} user={user}/>
 			<Container>
 			<MainBlockWithContent>
 					<MainContent>

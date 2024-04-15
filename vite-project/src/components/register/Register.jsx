@@ -13,18 +13,15 @@ const [login, setLogin] = useState("")
 const [password, setPassword] = useState("")
 
 
-// async function registerUser() {
-// 	if(!token){
-// 		alert("Нет авторизации!")
-// 		return
-// 	}
-// 	await authorize({name,login,password})
-// }
 
 const handleSubmit = async (event) => {
 	event.preventDefault();
+  }
 
-	await authorize({name,login,password}).then((data)=>{createUser(data.user)})
+  const regUser = async () => {
+	await authorize({name,login,password}).then((responseData)=>{createUser(responseData.user)
+	console.log("регистрация успешна")
+	})
 
   }
 
@@ -61,7 +58,7 @@ const handleSubmit = async (event) => {
 						placeholder="Пароль">
 
 					</ModalInput>
-						<ButtonLogin onClick={authorize}>Зарегистрироваться</ButtonLogin>
+						<ButtonLogin onClick={regUser}>Зарегистрироваться</ButtonLogin>
 						<FormGroup>
 							<p>Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link></p>
 						</FormGroup>

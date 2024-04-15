@@ -5,23 +5,28 @@ import { ContainerSignin, FormGroup, FormLogin, LoginBtn, Modal, ModalBlock, Mod
 import { logon } from "../../api"
 import { useState } from "react"
 
-function Login({setIsAuth, createUser}) {
+function Login({ createUser}) {
 
     const [login, setUserLogin] = useState("")
     const [password, setPassword] = useState("")
+   
 
-    const loginUser = async (event) => {
-        event.preventDefault();
-        await logon({ login, password}).then((data)=>{createUser(data.user)})
-    
+    const loginUser = async () => {
+
+        await logon({ login, password}).then((responseData)=>{createUser(responseData.user)
+        console.log("вход")
+        })
+        .catch((error)=>{
+            if (error.message==="Неправильный логин или пароль") {
+                alert(error.message)
+            }
+            else if (error.message==="Что-то сломалось") {
+                alert(error.message)
+            }
+        })
+     
       }
-    
-// const navigate = useNavigate()
 
-// function login() {
-//     setIsAuth(true)
-//     navigate(paths.MAIN)
-// }
 
     return (
         <>
@@ -51,7 +56,10 @@ function Login({setIsAuth, createUser}) {
                             onChange={(e)=>setPassword(e.target.value)}>
                         </ModalInput>
 
-                        <LoginBtn type="button" onClick={loginUser}>Войти</LoginBtn>
+                        <LoginBtn type="button" onClick={loginUser}>
+                            <Link to ={paths.MAIN}> Войти </Link>
+                        </LoginBtn>
+                        {/* <p style={{color:"red"}}>{showErrorLogin}</p> */}
 						<FormGroup>
 							<p>Нужно зарегистрироваться?</p>
 							<Link to={paths.REGISTER}>Регистрируйся здесь</Link>

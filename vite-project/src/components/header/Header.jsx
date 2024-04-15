@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 
 
-function Header({tasksList, setTasksList}) {
+function Header({tasksList, setTasksList, user}) {
 
 
 const [isOpen, setOpen] = useState(false)
@@ -49,7 +49,7 @@ const OpenExitWindow = () => {
 					</HeaderBtnMain>{
 
 					}
-						<HeaderUser onClick={OpenUser} >Ivan Ivanov</HeaderUser>
+						<HeaderUser onClick={OpenUser} >{user.name}</HeaderUser>
 						{isOpen && 
 						<HeaderPopUserSet id="user-set-target" >
 							<p>Ivan Ivanov</p>
