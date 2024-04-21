@@ -4,20 +4,17 @@ import { useNavigate } from "react-router-dom"
 export const TasksContext = createContext(null)
 
 export function TasksData({children}) {
-
-    const navigate = useNavigate()
    
-    const [task, setNewTask] = useState(null)
+   const [tasksList, setTasksList] = useState([])
  
  function createNewTask(newTask) {
-    setNewTask(newTask)
-    navigate(paths.MAIN)
+   setTasksList(newTask)
  }
 
 
 
 
- return <TasksContext.Provider value={{createNewTask}}>
+ return <TasksContext.Provider value={{tasksList, createNewTask, setTasksList}}>
             {children}
         </TasksContext.Provider>
         

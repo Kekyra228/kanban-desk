@@ -4,6 +4,8 @@ import { MainContainer, MainBlockWithContent, MainContent } from "./Main.styled"
 import { Container } from "../Common.styled";
 import Header from "../header/Header";
 import { useUserContext } from "../../contexts/hooks/useUser";
+import { useTasksContext } from "../../contexts/hooks/useTasks";
+import { getTodoes } from "../../api";
 
 
 
@@ -17,14 +19,29 @@ const statusList = [
 ];
 
 
-function MainBlock({ tasksList, isLoading, setTasksList, showError }) {
+function MainBlock() {
 
-const {user} =useUserContext()
+
+const {tasksList, setTasksList} = useTasksContext()
+
+const [isLoading, setIsLoading] = useState(true)
+
+const [showError, setShowError] = useState(null)
+
+useEffect(()=>{
+  getTodoes().then((tasksList)=>{setTasksList(tasksList.tasks)
+  setIsLoading(false)})
+
+  .catch((error)=>{
+	setShowError(error.message)
+	setIsLoading(false)
+  })
+  },[]) 
 
 	return (
 
 		<MainContainer>
-			<Header tasksList={tasksList} setTasksList={setTasksList} user={user}/>
+			<Header />
 			<Container>
 			<MainBlockWithContent>
 					<MainContent>

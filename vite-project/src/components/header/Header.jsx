@@ -5,9 +5,15 @@ import IsExit from "../exit/IsExit"
 import { Link } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 import CreatedTask from "../createdTask/CreatedTask"
+import { useUserContext } from "../../contexts/hooks/useUser"
+import { useTasksContext } from "../../contexts/hooks/useTasks"
 
 
-function Header({tasksList, setTasksList, user}) {
+function Header() {
+
+	const {user} = useUserContext()
+
+	const {tasksList, setTasksList} = useTasksContext()
 
 
 const [isOpen, setOpen] = useState(false)
@@ -30,6 +36,7 @@ const OpenUser =()=>{
 
 
 const [isUserExit, setExit] = useState(false)
+
 const OpenExitWindow = () => {
 	setExit ((isUserExit)=>!isUserExit)
 }

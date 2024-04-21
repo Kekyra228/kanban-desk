@@ -11,7 +11,7 @@ export function CreatedTask() {
 
 const {user} = useUserContext()
 
-const {createNewTask}  = useTasksContext()
+// const {createNewTask}  = useTasksContext()
 
 const [selected, setSelected] = useState("");
 
@@ -29,7 +29,7 @@ const [newTask, setNewTask] = useState({
   const createTask = async (event) => {
      event.preventDefault();
      const tasks = {...newTask, date: selected};
-	 addTaskApi({tasks, token: user?.token}).then((responseData)=>{(console.log(responseData.tasks))
+	 addTaskApi({tasks, token: user?.token}).then((responseData)=>{createNewTask(responseData.tasks)
     })
 
   }
@@ -83,7 +83,7 @@ const [newTask, setNewTask] = useState({
                             </NewCardCategorisTheme> */}
                         </NewCardCategorisThemes>
                     </NewCardCategoris>
-                    <CreateNewBtn onClick={createTask}>Создать задачу</CreateNewBtn>
+                    <CreateNewBtn onClick={createTask}><Link to={paths.MAIN}>Создать задачу</Link></CreateNewBtn>
                 </NewCardContent>
             </NewCardBlock>
         </NewCardContainer>

@@ -7,29 +7,10 @@ import { useUserContext } from '../contexts/hooks/useUser'
 
 const MainPage = () => {
   
-  const {user} = useUserContext()
-    
-    const [tasksList, setTasksList] = useState([])
-
-    const [isLoading, setIsLoading] = useState(true)
-
-    const [showError, setShowError] = useState(null)
-    
-    useEffect(()=>{
-      getTodoes().then((tasksList)=>{setTasksList(tasksList.tasks)
-      setIsLoading(false)})
-
-      .catch((error)=>{
-        setShowError(error.message)
-        setIsLoading(false)
-      })
-      },[]) 
-    
-
 
   return (
         <>
-          <MainBlock tasksList={tasksList} isLoading={isLoading} setTasksList={setTasksList} showError={showError} user={user} />
+          <MainBlock  />
           <Outlet />
         </>
   
