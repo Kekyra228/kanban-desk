@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import { Wrapper } from '../Common.styled'
 import { ContainerSignin, FormLogin, Modal, ButtonLogin } from './Register.styled'
 import { ModalBlock, ModalTtl, ModalInput, FormGroup } from '../auth/Login.styled'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { paths } from '../../lib/constsns'
 import { authorize } from '../../api'
+import { useUserContext } from '../../contexts/hooks/useUser'
 
-const Register = ({createUser}) => {
+const Register = () => {
 
+const {createUser} = useUserContext()
+
+const navigate = useNavigate()
 const [name, setName] = useState("")
 const [login, setLogin] = useState("")
 const [password, setPassword] = useState("")
@@ -21,6 +25,7 @@ const handleSubmit = async (event) => {
   const regUser = async () => {
 	await authorize({name,login,password}).then((responseData)=>{createUser(responseData.user)
 	console.log("регистрация успешна")
+	navigate(paths.LOGIN)
 	})
 
   }
@@ -58,7 +63,9 @@ const handleSubmit = async (event) => {
 						placeholder="Пароль">
 
 					</ModalInput>
-						<ButtonLogin onClick={regUser}>Зарегистрироваться</ButtonLogin>
+						<ButtonLogin onClick={regUser}>
+							<Link to={paths.LOGIN}>Зарегистрироваться</Link>
+							</ButtonLogin>
 						<FormGroup>
 							<p>Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link></p>
 						</FormGroup>

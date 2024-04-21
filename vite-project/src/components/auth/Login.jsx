@@ -4,8 +4,11 @@ import { Wrapper } from "../Common.styled"
 import { ContainerSignin, FormGroup, FormLogin, LoginBtn, Modal, ModalBlock, ModalInput, ModalTtl } from "./Login.styled"
 import { logon } from "../../api"
 import { useState } from "react"
+import { useUserContext } from "../../contexts/hooks/useUser"
 
-function Login({ createUser}) {
+function Login() {
+
+    const {createUser} = useUserContext()
 
     const [login, setUserLogin] = useState("")
     const [password, setPassword] = useState("")

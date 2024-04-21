@@ -58,3 +58,27 @@ export async function authorize({name,login,password}) {
     const responseData = await response.json()
     return responseData
 }
+
+export async function addTaskApi({title,topic,status,description,date, token}) {
+    const response = await fetch (
+        "https://wedev-api.sky.pro/api/kanban",{
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                title,
+                topic,
+                status,
+                description,
+                date
+              })
+        }
+    )
+
+    if (!response.ok) {
+        throw new Error ("ошибка")
+    }
+    const responseData = await response.json()
+    return responseData
+}

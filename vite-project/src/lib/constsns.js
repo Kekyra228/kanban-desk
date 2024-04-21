@@ -4,5 +4,6 @@ ERROR:"*",
   EXIT:"/exit",
   LOGIN:"/login",
   REGISTER: "/register",
-  CARD: "/card/:id"
+  CARD: "/card/:id",
+  CREATE:"/create"
 }

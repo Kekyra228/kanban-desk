@@ -4,6 +4,7 @@ import { Container } from "../Common.styled"
 import IsExit from "../exit/IsExit"
 import { Link } from "react-router-dom"
 import { paths } from "../../lib/constsns"
+import CreatedTask from "../createdTask/CreatedTask"
 
 
 function Header({tasksList, setTasksList, user}) {
@@ -14,16 +15,18 @@ const OpenUser =()=>{
 	setOpen ((isOpen)=>!isOpen)
 }
 
-		function addTask() {
-			const newTask = { 
-				_id: tasksList.length+1,
-				topic:"No name",
-				title: "Новая задача", 
-				date:"01.01.24",
-				status:"Без статуса"
-				}
-			setTasksList([...tasksList, newTask])
-		}
+		//  function addTask() {
+		// 	const newTask = { 
+		// 		_id: tasksList.length+1,
+		// 		topic:"No name",
+		// 		title: "Новая задача", 
+		// 		date:"01.01.24",
+		// 		status:"Без статуса"
+		// 		}
+		// 	setTasksList([...tasksList, newTask])
+
+		
+		// }
 
 
 const [isUserExit, setExit] = useState(false)
@@ -44,8 +47,8 @@ const OpenExitWindow = () => {
 						<a href="" target="_self"><img src="images/logo_dark.png" alt="logo"></img></a>
 					</div> */}
 					<HeaderNav>
-					<HeaderBtnMain onClick={addTask}> 
-						Создать новую задачу
+					<HeaderBtnMain > 
+					<Link to={paths.CREATE}>Создать новую задачу</Link>
 					</HeaderBtnMain>{
 
 					}

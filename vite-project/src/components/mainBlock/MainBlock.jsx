@@ -3,6 +3,7 @@ import Columns from "./Columns";
 import { MainContainer, MainBlockWithContent, MainContent } from "./Main.styled";
 import { Container } from "../Common.styled";
 import Header from "../header/Header";
+import { useUserContext } from "../../contexts/hooks/useUser";
 
 
 
@@ -16,9 +17,9 @@ const statusList = [
 ];
 
 
-function MainBlock({ tasksList, isLoading, setTasksList, showError, user }) {
+function MainBlock({ tasksList, isLoading, setTasksList, showError }) {
 
-
+const {user} =useUserContext()
 
 	return (
 

@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom"
 import { ExitBlock, ExitButtonNo, ExitButtonYes, ExitContainer, ExitForm, ExitFormGroup, ExitTtl, PopExit } from "./IsExit.styled"
 import { paths } from "../../lib/constsns"
+import { useUserContext } from "../../contexts/hooks/useUser"
 
-function IsExit({exitUser}) {
+function IsExit() {
 
-// 	const navigate = useNavigate()
-
-// 	function exit() {
-//     setIsAuth(true)
-//     navigate(paths.LOGIN)
-// }
-
+const {exitUser} = useUserContext()
     return (
-       <PopExit  id="popExit">
+       <PopExit>
 		<ExitContainer>
 			<ExitBlock>
 					<ExitTtl>
