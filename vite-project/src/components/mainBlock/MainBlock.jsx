@@ -21,15 +21,16 @@ const statusList = [
 
 function MainBlock() {
 
+const {user} = useUserContext()
 
-const {tasksList, setTasksList} = useTasksContext()
+const {tasksList, createNewTask} = useTasksContext()
 
 const [isLoading, setIsLoading] = useState(true)
 
 const [showError, setShowError] = useState(null)
 
 useEffect(()=>{
-  getTodoes().then((tasksList)=>{setTasksList(tasksList.tasks)
+  getTodoes({ token: user.token }).then((tasksList)=>{createNewTask(tasksList.tasks)
   setIsLoading(false)})
 
   .catch((error)=>{
@@ -50,7 +51,7 @@ useEffect(()=>{
 						{isLoading ? "Данные загружаются" : <>
 							{statusList.map((status, index) =>
 								<Columns status={status} key={index}
-									 tasks={tasksList.filter((task) => task.status === status)}
+									 cardList={tasksList.filter((task) => task.status === status)}
 								/>
 							)
 							}</>

@@ -27,15 +27,16 @@ const [newTask, setNewTask] = useState({
 
   const createTask = async (event) => {
      event.preventDefault();
-     const tasks = {...newTask, date: selected};
-	 addTaskApi({tasks, date: selected, token: user?.token}).then((responseData)=>{createNewTask(responseData)
+     const tasksData = {...newTask, date: selected};
+	 addTaskApi({tasksData, date: selected, token: user?.token}).then((responseData)=>{ console.log(responseData.tasks)
+        createNewTask(responseData)
         console.log("задача отправлена")})
-        .catch(() => {
-            if (!newTask.date || !newTask.description || !newTask.status) {
-              setError("Пожалуйста, заполните все поля!");
-              return;
-            }
-         })
+        // .catch(() => {
+        //     if (!newTask.date || !newTask.description || !newTask.status) {
+        //       throw new Error ("Пожалуйста, заполните все поля!");
+        //       return;
+        //     }
+        //  })
 
   }
 

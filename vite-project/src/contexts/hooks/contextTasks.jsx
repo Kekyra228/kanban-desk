@@ -14,7 +14,7 @@ export function TasksData({children}) {
 
 
 
- return <TasksContext.Provider value={{tasksList, createNewTask, setTasksList}}>
+ return <TasksContext.Provider value={{tasksList, createNewTask}}>
             {children}
         </TasksContext.Provider>
         

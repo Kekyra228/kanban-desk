@@ -3,14 +3,14 @@ import { ColumnMain, ColumnTitle } from "./Columns.styled";
 
 								
 
-function Columns({status, tasks}) {
+function Columns({status, cardList}) {
 
     return (
 		<ColumnMain>
 			<ColumnTitle>
 			<p>{status}</p>
 			</ColumnTitle>
-			{tasks.map((task)=> <Cards key={task._id}{...task}/>)}
+			{cardList.map((task)=> <Cards key={task._id}{...task}/>)}
 		</ColumnMain>					
 
     )
