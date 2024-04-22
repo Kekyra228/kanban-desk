@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 import CalendarContent from "../calendar/Calendar"
 import { useState } from "react";
+import { PopBrowse, PopBrowseContainer } from "./DataTasks.styled";
 
 
 function DataTask({status, topic, description}) {
@@ -9,8 +10,8 @@ function DataTask({status, topic, description}) {
 	const [selected, setSelected] = useState("");
 
     return (
-        <div className="pop-browse" id="popBrowse">
-				<div className="pop-browse__container">
+        <PopBrowse>
+				<PopBrowseContainer>
 					<div className="pop-browse__block">
 						<div className="pop-browse__content">
 							<div className="pop-browse__top-block">
@@ -62,8 +63,8 @@ function DataTask({status, topic, description}) {
 													
 						</div>
 					</div>
-				</div>
-			</div>
+				</PopBrowseContainer>
+			</PopBrowse>
     )
 }
 

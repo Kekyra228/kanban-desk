@@ -160,29 +160,41 @@ margin-bottom: 20px;
     margin-bottom: 14px;
 }
 `
+const topicTheme = {
+  "Web Design":{
+    backgroundColor: "#E9D4FF",
+    color: "#9a48f1"
+  },
+  "Research":{
+    backgroundColor: "#B4FDD1",
+    color: "#06b16e"
+  },
+  "Copywriting":{
+    backgroundColor: "#FFE4C2",
+    color: "#ff6d00"
+  }
+
+}
 
 export const NewCardCategorisThemes = styled.div`
     display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: flex-start;
+
 `
 
-export const NewCardCategorisTheme = styled.div`
-display: inline-block;
+export const NewCardCategorisTheme = styled.label`
+  display: inline-block;
   width: auto;
   height: 30px;
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
   opacity: 0.4;
-  background-color: ${props => colorTheme[props.$topic]?.backgroundColor || 'gray'};
-  & p {
-    font-size: 14px;
-  font-weight: 600;
-  line-height: 14px;
-  white-space: nowrap;
-  color:${props => colorTheme[props.$topic]?.color || 'black'};
+  background-color: ${props => topicTheme[props.$topic]?.backgroundColor || 'gray'};
 
-  }
+  color:${props => topicTheme[props.$topic]?.color || 'black'};
+
+  
 `

@@ -7,7 +7,7 @@ import { addTaskApi } from "../../api"
 import { useUserContext } from "../../contexts/hooks/useUser"
 import { useTasksContext } from "../../contexts/hooks/useTasks"
 
-export function CreatedTask() {
+export function CreatedTask({topic}) {
 
 const {user} = useUserContext()
 
@@ -27,8 +27,8 @@ const [newTask, setNewTask] = useState({
 
   const createTask = async (event) => {
      event.preventDefault();
-     const tasksData = {...newTask};
-	 addTaskApi({tasksData, date: selected, token: user?.token}).then((responseData)=>{ console.log(responseData)
+     const tasksData = {...newTask, date: selected, token: user?.token};
+	 addTaskApi(tasksData).then((responseData)=>{ console.log(responseData.tasks)
         createNewTask(responseData.tasks)
         console.log("задача отправлена")})
         // .catch(() => {
@@ -76,31 +76,37 @@ const [newTask, setNewTask] = useState({
                     </NewCardWrap>
                     <NewCardCategoris>
                         <p>Категория</p>
-                        <NewCardCategorisThemes>
-                            <label>Research 
+                        <NewCardCategorisThemes >
+                            <NewCardCategorisTheme 
+                            $topic="Research" > 
+                            Research 
                                 <input 
                                 type="radio" 
                                 name="topic"
                                 value = "Research"
                                 onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
                                 />
-                            </label>
-                            <label>Copywriting
+                            </NewCardCategorisTheme>
+                            <NewCardCategorisTheme 
+                            $topic="Copywriting" >
+                                 Copywriting
                                 <input 
                                 type="radio" 
                                 name="topic"
                                 value = "Copywriting"
                                 onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
                                 />
-                            </label>
-                            <label>Web Design
+                            </NewCardCategorisTheme>
+                            <NewCardCategorisTheme 
+                            $topic="Web Design" > 
+                            Web Design
                                 <input 
                                 type="radio" 
                                 name="topic"
                                 value = "Web Design"
                                 onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
                                 />
-                            </label>
+                            </NewCardCategorisTheme>
                             {/* <NewCardCategorisTheme $theme={topic}>
                                 <p>{topic}Web Design</p>
                             </NewCardCategorisTheme>
