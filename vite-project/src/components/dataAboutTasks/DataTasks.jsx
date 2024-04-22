@@ -1,10 +1,12 @@
 import { Link, useParams } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 import CalendarContent from "../calendar/Calendar"
+import { useState } from "react";
 
 
 function DataTask({status, topic, description}) {
 	
+	const [selected, setSelected] = useState("");
 
     return (
         <div className="pop-browse" id="popBrowse">
@@ -33,7 +35,7 @@ function DataTask({status, topic, description}) {
 									</div>
 								</form >
 						
-									<CalendarContent/>
+									<CalendarContent selected={selected} setSelected={setSelected}/>
 								
 							</div>
 							<div className="theme-down__categories theme-down">

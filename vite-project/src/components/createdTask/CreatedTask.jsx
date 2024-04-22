@@ -11,7 +11,7 @@ export function CreatedTask() {
 
 const {user} = useUserContext()
 
-// const {createNewTask}  = useTasksContext()
+const {createNewTask}  = useTasksContext()
 
 const [selected, setSelected] = useState("");
 
@@ -22,15 +22,20 @@ const [newTask, setNewTask] = useState({
     title:"",
     topic:"",
     description:""
- 
 })
 
 
   const createTask = async (event) => {
      event.preventDefault();
      const tasks = {...newTask, date: selected};
-	 addTaskApi({tasks, token: user?.token}).then((responseData)=>{createNewTask(responseData.tasks)
-    })
+	 addTaskApi({tasks, date: selected, token: user?.token}).then((responseData)=>{createNewTask(responseData)
+        console.log("задача отправлена")})
+        .catch(() => {
+            if (!newTask.date || !newTask.description || !newTask.status) {
+              setError("Пожалуйста, заполните все поля!");
+              return;
+            }
+         })
 
   }
 
@@ -48,6 +53,7 @@ const [newTask, setNewTask] = useState({
                                 <NewCardFormInput 
                                 		type="text" 
                                         name="title"
+                                        value={newTask.title}
                                         onChange={(e) => setNewTask({...newTask, title: e.target.value})}
                                         placeholder="Введите название задачи...">
                                 </NewCardFormInput>
@@ -57,6 +63,7 @@ const [newTask, setNewTask] = useState({
                                 <NewCardFormTextArea 
                                     	type="text" 
                                         name="description"
+                                        value={newTask.description}
                                         onChange={(e) => setNewTask({...newTask, description: e.target.value})}
                                         placeholder="Введите описание задачи...">
                                 </NewCardFormTextArea>

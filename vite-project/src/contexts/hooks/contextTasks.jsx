@@ -7,9 +7,9 @@ export function TasksData({children}) {
    
    const [tasksList, setTasksList] = useState([])
  
- function createNewTask(newTask) {
-   setTasksList(newTask)
- }
+   function createNewTask(newTask) {
+      setTasksList(newTask)
+   }
 
 
 
