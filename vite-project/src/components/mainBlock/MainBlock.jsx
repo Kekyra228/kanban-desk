@@ -23,8 +23,8 @@ function MainBlock() {
 
 const {user} = useUserContext()
 
-const {tasksList, createNewTask} = useTasksContext()
 
+const {tasksList, createNewTask} = useTasksContext()
 const [isLoading, setIsLoading] = useState(true)
 
 const [showError, setShowError] = useState(null)

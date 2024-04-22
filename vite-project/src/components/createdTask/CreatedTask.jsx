@@ -21,15 +21,15 @@ const [selected, setSelected] = useState("");
 const [newTask, setNewTask] = useState({
     title:"",
     topic:"",
-    description:""
+    description:"",
 })
 
 
   const createTask = async (event) => {
      event.preventDefault();
-     const tasksData = {...newTask, date: selected};
-	 addTaskApi({tasksData, date: selected, token: user?.token}).then((responseData)=>{ console.log(responseData.tasks)
-        createNewTask(responseData)
+     const tasksData = {...newTask};
+	 addTaskApi({tasksData, date: selected, token: user?.token}).then((responseData)=>{ console.log(responseData)
+        createNewTask(responseData.tasks)
         console.log("задача отправлена")})
         // .catch(() => {
         //     if (!newTask.date || !newTask.description || !newTask.status) {
@@ -77,9 +77,30 @@ const [newTask, setNewTask] = useState({
                     <NewCardCategoris>
                         <p>Категория</p>
                         <NewCardCategorisThemes>
-                            <label>Research <input type="radio" value = "Research"/></label>
-                            <label>Copywriting<input type="radio" value = "Copywriting"/></label>
-                            <label>Web Design<input type="radio" value = "Web Design"/></label>
+                            <label>Research 
+                                <input 
+                                type="radio" 
+                                name="topic"
+                                value = "Research"
+                                onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
+                                />
+                            </label>
+                            <label>Copywriting
+                                <input 
+                                type="radio" 
+                                name="topic"
+                                value = "Copywriting"
+                                onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
+                                />
+                            </label>
+                            <label>Web Design
+                                <input 
+                                type="radio" 
+                                name="topic"
+                                value = "Web Design"
+                                onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
+                                />
+                            </label>
                             {/* <NewCardCategorisTheme $theme={topic}>
                                 <p>{topic}Web Design</p>
                             </NewCardCategorisTheme>
