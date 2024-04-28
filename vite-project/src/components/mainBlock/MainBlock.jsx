@@ -22,8 +22,6 @@ const statusList = [
 function MainBlock() {
 
 const {user} = useUserContext()
-
-
 const {tasksList, createNewTask} = useTasksContext()
 const [isLoading, setIsLoading] = useState(true)
 
@@ -45,9 +43,8 @@ useEffect(()=>{
 			<Header />
 			<Container>
 			<MainBlockWithContent>
+			{showError && (<p style={{color:"red"}}> Ошибочка...</p>)}
 					<MainContent>
-						{showError && (<p style={{color:"red"}}> Ошибочка...</p>)}
-
 						{isLoading ? "Данные загружаются" : <>
 							{statusList.map((status, index) =>
 								<Columns status={status} key={index}

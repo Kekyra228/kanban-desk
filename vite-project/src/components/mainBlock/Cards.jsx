@@ -2,8 +2,6 @@ import { Link } from "react-router-dom"
 import { CardContainer, CardContent, CardGroup, CardItem, CardTheme, CardDate, CardsCard, CardButton, CardTitle } from "./Cards.styled"
 
 
-
-
 function Cards({topic, title, date, _id}) {
 
 

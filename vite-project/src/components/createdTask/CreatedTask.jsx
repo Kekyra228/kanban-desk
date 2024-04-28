@@ -7,7 +7,7 @@ import { addTaskApi } from "../../api"
 import { useUserContext } from "../../contexts/hooks/useUser"
 import { useTasksContext } from "../../contexts/hooks/useTasks"
 
-export function CreatedTask({topic}) {
+export function CreatedTask() {
 
 const {user} = useUserContext()
 
