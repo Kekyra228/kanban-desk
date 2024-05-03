@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 import CalendarContent from "../calendar/Calendar"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PopBrowse, PopBrowseBlock, PopBrowseBtn, PopBrowseBtnClose, PopBrowseBtnDelete, PopBrowseBtnEdit, PopBrowseBtnGroup, PopBrowseContainer, PopBrowseContent, PopBrowseForm, PopBrowseFormBlock, PopBrowseTopBlock, PopBrowseWrap, PopBrowseContentTheme, PopBrowseContentThemeTop, PopBrowseStatus, PopBrowseStatusThemes, PopBrowseStatusTheme, PopBrowseEditMode, PopBrowseEditBtnGroup, PopBrowseBtnEditSave, PopBrowseBtnEditUndo, PopBrowseBtnEditDelete, PopBrowseBtnEditClose, EditedArea, PopBrowseStatusThemeInput } from "./DataTasks.styled";
 import { deleteTask, editTask } from "../../api";
 import { useUserContext } from "../../contexts/hooks/useUser";
@@ -26,8 +26,6 @@ function DataTask({status}) {
 	
 
 
-	
-
 const deleteItem = async () => {
 	await deleteTask({id, token:user.token}).then((tasksList)=>{createNewTask(tasksList.tasks)
 		nav(paths.MAIN)
@@ -40,9 +38,18 @@ const openEditMode = () => {
 	setIsEdit((isEdit)=>!isEdit)
 }
 
-const taksItemCurrent = tasksList.find((task)=>task._id===id)
 
-const [editingTask, setEditingTask] = useState(taksItemCurrent)
+const [editingTask, setEditingTask] = useState(null)
+
+
+useEffect(()=>{
+	if(tasksList.length) {
+		const taksItemCurrent = tasksList.find((task)=>task._id===id)
+		setEditingTask(taksItemCurrent)
+	}
+},[tasksList]
+)
+
 const editItem = async () => {
 	const editingTaskData = {...editingTask,  date: selected, id, token:user.token}
 	await editTask(editingTaskData).then((response)=>{createNewTask(response.tasks)})
@@ -66,10 +73,10 @@ const editItem = async () => {
                                         placeholder="Введите новое название задачи...">
                                 </NewCardFormInput>
 								:
-								<h3>{taksItemCurrent.title}</h3>}
+								<h3>{editingTask?.title}</h3>}
 								
-								<PopBrowseContentThemeTop $topic = {taksItemCurrent.topic}>
-									<p >{taksItemCurrent.topic}</p>
+								<PopBrowseContentThemeTop $topic = {editingTask?.topic}>
+									<p >{editingTask?.topic}</p>
 								</PopBrowseContentThemeTop>
 							</PopBrowseTopBlock>
 							<PopBrowseStatus>
@@ -90,7 +97,7 @@ const editItem = async () => {
                                         </>
                                         : 
                                         <PopBrowseStatusTheme>
-                                        <p>{taksItemCurrent.status}</p> 
+                                        {editingTask?.status}
                                         </PopBrowseStatusTheme>
                                     
                                     }
@@ -104,14 +111,14 @@ const editItem = async () => {
 								<EditedArea
 								type="text" 
 								name="description"
-								value={editingTask.description}
+								value={editingTask?.description}
 								onChange={(e) => setEditingTask({ ...editingTask,description: e.target.value})}
 								placeholder="Введите описание задачи...">
 								</EditedArea>
 							</PopBrowseFormBlock> :
 								<PopBrowseFormBlock>
 								<label htmlFor="textArea01" className="subttl">Описание задачи</label>
-								<EditedArea name="text" id="textArea01"  readOnly placeholder="Введите описание задачи...">{taksItemCurrent.description}</EditedArea>
+								<EditedArea name="text" id="textArea01"  readOnly placeholder="Введите описание задачи...">{editingTask?.description}</EditedArea>
 							</PopBrowseFormBlock>
 								}								
 									
@@ -119,7 +126,7 @@ const editItem = async () => {
 									{isEdit ?
 									<CalendarContent selected={selected} setSelected={setSelected}/>
 									:
-									<CalendarContent selected={taksItemCurrent.date} setSelected={taksItemCurrent.date}/>
+									<CalendarContent selected={editingTask?.date} setSelected={editingTask?.date}/>
 									}
 									
 								

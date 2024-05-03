@@ -74,10 +74,17 @@ display: flex;
 flex-direction: row;
 justify-content: flex-start;
 align-items: flex-start;
+align-items: center;
 padding: 0px;
 margin: 14px 0px;
-
-  & p {
+border-radius: 24px;
+border: 0.7px solid rgba(148, 166, 190, 0.4);
+background: rgb(148, 166, 190);
+color: rgb(255, 255, 255);
+padding: 8px 20px 8px 20px;
+  margin-right: 7px;
+  box-sizing: border-box;
+  /* & p {
     box-sizing: border-box;
 border: 0.7px solid rgba(148, 166, 190, 0.4);
 border-radius: 24px;
@@ -88,21 +95,13 @@ line-height: 10px;
 text-align: center;
 padding: 10px 14px 10px 14px;
 background: rgb(148, 166, 190);
-  }
+  } */
 
 
  `
  export const PopBrowseStatusThemeInput = styled.input`
-  display: inline-block;
-  width: auto;
-  height: 30px;
-  padding: 8px 20px;
-  border-radius: 24px;
-  margin-right: 7px;
-  opacity: 0.4;
-  box-sizing: border-box;
-border-radius: 24px;
-background-color: #9a48f1
+
+
  `
 
 
