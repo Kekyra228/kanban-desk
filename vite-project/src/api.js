@@ -96,8 +96,8 @@ export async function deleteTask({id, token}) {
         }
     )
 
-    if (!response.ok) {
-        throw new Error ("ошибка")
+    if (response.status===400) {
+        throw new Error ("Неккоректные данные")
     }
     const responseData = await response.json()
     return responseData

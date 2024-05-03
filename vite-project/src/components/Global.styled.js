@@ -32,6 +32,11 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  color: #000000;
-}
+  background-color: #E5E5E5
+};
+
+
 `;
+
+/* background-color: ${({ theme }) => theme.body};
+color: ${({ theme }) => theme.text}; */

@@ -19,7 +19,7 @@ const statusList = [
 ];
 
 
-function MainBlock() {
+function MainBlock({theme, setTheme}) {
 
 const {user} = useUserContext()
 const {tasksList, createNewTask} = useTasksContext()
@@ -36,6 +36,7 @@ useEffect(()=>{
 	setIsLoading(false)
   })
   },[]) 
+
 
 	return (
 

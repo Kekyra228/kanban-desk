@@ -68,21 +68,43 @@ export const PopBrowseStatusThemes = styled.div`
   justify-content: flex-start;
 `
 
-export const PopBrowseStatusTheme = styled.div`
-  border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94A6BE;
-  padding: 11px 14px 10px 14px;
-  margin-right: 7px;
-  margin-bottom: 7px;
- display:flex;
- align-items: center;
+export const PopBrowseStatusTheme = styled.label`
+height: 30px;
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: flex-start;
+padding: 0px;
+margin: 14px 0px;
+
   & p {
-    font-size: 14px;
-  line-height: 1;
-  letter-spacing: -0.14px;
+    box-sizing: border-box;
+border: 0.7px solid rgba(148, 166, 190, 0.4);
+border-radius: 24px;
+color: rgb(255, 255, 255);
+font-size: 14px;
+font-weight: 400;
+line-height: 10px;
+text-align: center;
+padding: 10px 14px 10px 14px;
+background: rgb(148, 166, 190);
   }
-`
+
+
+ `
+ export const PopBrowseStatusThemeInput = styled.input`
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+  box-sizing: border-box;
+border-radius: 24px;
+background-color: #9a48f1
+ `
+
 
 export const PopBrowseWrap = styled.div`
   display: flex;
@@ -122,6 +144,7 @@ margin: 0px 10px;
 export const PopBrowseContentTheme = styled.div`
   display: none;
   margin-bottom: 20px;
+
 `
 
 

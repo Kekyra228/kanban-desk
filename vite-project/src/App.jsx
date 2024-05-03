@@ -1,7 +1,5 @@
-import { useState } from 'react'
+
 import './App.css'
-import { tasks } from './data'
-import { useEffect } from 'react'
 import { GlobalStyle } from './components/Global.styled'
 import AppRoutes from './Routes'
 
@@ -9,10 +7,11 @@ import AppRoutes from './Routes'
 
 
 function App() {
-
-
+//  const [theme, changeTheme] = ThemeChange
+//  const themeMode = theme === Светлая ? lightTheme : darkTheme;
   return (
     <>
+
       <GlobalStyle />
 
       <AppRoutes/>

@@ -2,21 +2,18 @@ import { Link, useNavigate } from "react-router-dom"
 import { paths } from "../../lib/constsns"
 import CalendarContent from "../calendar/Calendar"
 import { NewCard, NewCardBlock, NewCardContainer, NewCardContent, NewCardClose, NewCardWrap, NewCardForm, NewCardFormBlock, NewCardFormTitle, NewCardFormInput, NewCardFormTextArea, CreateNewBtn, NewCardCategoris, NewCardCategorisThemes, NewCardCategorisTheme} from "./CreatedTasks.styled"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { addTaskApi } from "../../api"
 import { useUserContext } from "../../contexts/hooks/useUser"
 import { useTasksContext } from "../../contexts/hooks/useTasks"
 
 export function CreatedTask() {
 
+const nav = useNavigate()
 const {user} = useUserContext()
-
 const {createNewTask}  = useTasksContext()
-
 const [selected, setSelected] = useState("");
 
-// const [nameTask, setNameTask] = useState("")
-// const [description, setDescription] = useState("")
 
 const [newTask, setNewTask] = useState({
     title:"",
@@ -24,19 +21,26 @@ const [newTask, setNewTask] = useState({
     description:"",
 })
 
+const [showError, setShowError] = useState(null)
+
 
   const createTask = async (event) => {
      event.preventDefault();
      const tasksData = {...newTask, date: selected, token: user?.token};
 	 addTaskApi(tasksData).then((responseData)=>{ console.log(responseData.tasks)
         createNewTask(responseData.tasks)
+        nav(paths.MAIN)
         console.log("задача отправлена")})
-        // .catch(() => {
-        //     if (!newTask.date || !newTask.description || !newTask.status) {
-        //       throw new Error ("Пожалуйста, заполните все поля!");
-        //       return;
-        //     }
-        //  })
+        .catch((err) => {
+            if (!newTask.date || !newTask.description || !newTask.title )  {
+                setShowError(err.message)
+                nav(paths.CREATE)
+            }
+            else if (!newTask.date || !newTask.topic)  {
+                setShowError(err.message)
+                nav(paths.CREATE)
+            }
+         })
 
   }
 
@@ -49,6 +53,7 @@ const [newTask, setNewTask] = useState({
                     <NewCardClose><Link to={paths.MAIN}>ЗАКРЫТЬ</Link></NewCardClose>
                     <NewCardWrap>
                         <NewCardForm action="#">
+                        
                             <NewCardFormBlock>
                                 <NewCardFormTitle>Название задачи</NewCardFormTitle>
                                 <NewCardFormInput 
@@ -96,6 +101,7 @@ const [newTask, setNewTask] = useState({
                                 value = "Copywriting"
                                 onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
                                 />
+                               
                             </NewCardCategorisTheme>
                             <NewCardCategorisTheme 
                             $topic="Web Design" > 
@@ -106,19 +112,12 @@ const [newTask, setNewTask] = useState({
                                 value = "Web Design"
                                 onChange={(e) => setNewTask({...newTask, topic: e.target.value})}
                                 />
-                            </NewCardCategorisTheme>
-                            {/* <NewCardCategorisTheme $theme={topic}>
-                                <p>{topic}Web Design</p>
-                            </NewCardCategorisTheme>
-                            <NewCardCategorisTheme>
-                                <p>{topic}Research</p>
-                            </NewCardCategorisTheme>
-                            <NewCardCategorisTheme>
-                                <p>{topic}Copywriting</p>
-                            </NewCardCategorisTheme> */}
+                            </NewCardCategorisTheme> 
                         </NewCardCategorisThemes>
+                       
                     </NewCardCategoris>
-                    <CreateNewBtn onClick={createTask}><Link to={paths.MAIN}>Создать задачу</Link></CreateNewBtn>
+                   {showError && <p style={{color:"red"}}>Зполните все поля!</p>}
+                    <CreateNewBtn onClick={createTask}>Создать задачу</CreateNewBtn>
                 </NewCardContent>
             </NewCardBlock>
         </NewCardContainer>

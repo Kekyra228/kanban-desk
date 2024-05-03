@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
+
+// const toggleTheme = {
+//   "Светлая":{
+//     backgroundColor: "#E5E5E5"
+//   },
+//   "Темная":{
+//     backgroundColor: "#20202C",
+//   }
+// }
 export const MainContainer = styled.main`
   width: 100%;
-  background-color: #EAEEF6;
-
+  
+  
 `
 
 export const MainBlockWithContent = styled.div`

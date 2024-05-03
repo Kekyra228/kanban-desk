@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
+
 
 export const TasksContext = createContext(null)
 
@@ -10,7 +10,6 @@ export function TasksData({children}) {
    function createNewTask(newTask) {
       setTasksList(newTask)
    }
-
 
 
 

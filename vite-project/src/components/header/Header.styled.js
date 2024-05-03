@@ -1,9 +1,19 @@
 import styled from "styled-components";
 
+
+// const toggleTheme = {
+//   "Светлая":{
+//     color: "#FFFFFF"
+//   },
+//   "Темная":{
+//     backgroundColor: "#20202C",
+//   }
+// }
+
 export const HeaderMain = styled.header `
   width: 100%;
   margin: 0 auto;
-  background-color: #FFFFFF;
+background-color: #FFFFFF
 `
 
 export const HeaderBlock = styled.div`
@@ -123,27 +133,20 @@ export const UserTheme = styled.div`
 
 `
 
-export const UserThemInput =  styled.input`
-position: relative;
-width: 24px;
-height: 13px;
+export const UserThemeLight =  styled.button`
 border-radius: 100px;
 background: #EAEEF6;
 outline: none;
--webkit-appearance: none;
-   -moz-appearance: none;
-        appearance: none;
-  &:before{
-    content: "";
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background-color: #94A6BE;
-  transition: 0.5s;
-  left: 12px;
+  &::after{
+    content: "☀️";
+  }
+`
+export const UserThemeDark =  styled.button`
+border-radius: 100px;
+background: #EAEEF6;
+outline: none;
+  &::after{
+    content: "🌑";
   }
 `
 
