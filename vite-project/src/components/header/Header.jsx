@@ -57,7 +57,7 @@ const OpenExitWindow = () => {
 								<UserThemeLight onClick={changeTheme} />
 								<UserThemeDark onClick={changeTheme} /> */}
 							</UserTheme>
-							<UserButton> <Link to={paths.EXIT}>Выйти</Link></UserButton>
+							<UserButton> <Link to={paths.EXIT}><p>Выйти</p></Link></UserButton>
 						</HeaderPopUserSet>
 						}
 					</HeaderNav>

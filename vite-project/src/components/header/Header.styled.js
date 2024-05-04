@@ -154,12 +154,16 @@ export const UserButton = styled.button`
   width: 72px;
   height: 30px;
   background: transparent;
-  color: #565EEF;
   border-radius: 4px;
   border: 1px solid #565EEF;
+  & p {
+    color: #565EEF;
+    &:hover {
+      color: #fff;
+    }
+  }
   &:hover {
     background-color: #565EEF;
-    color: #fff
   }
 `
 

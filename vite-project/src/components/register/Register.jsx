@@ -16,7 +16,7 @@ const [name, setName] = useState("")
 const [login, setLogin] = useState("")
 const [password, setPassword] = useState("")
 
-
+const [showError, setShowError] = useState(null)
 
 const handleSubmit = async (event) => {
 	event.preventDefault();
@@ -24,7 +24,14 @@ const handleSubmit = async (event) => {
 
   const regUser = async () => {
 	await authorize({name,login,password}).then((responseData)=>{createUser(responseData.user)
-	console.log("регистрация успешна")
+		.catch((error)=>{
+            if (error.message==="Пользователь уже существует") {
+                alert(error.message)
+            }
+            else if (error.message==="Что-то сломалось") {
+                alert(error.message)
+            }
+        })
 	navigate(paths.LOGIN)
 	})
 
@@ -64,10 +71,11 @@ const handleSubmit = async (event) => {
 
 					</ModalInput>
 						<ButtonLogin onClick={regUser}>
-							<Link to={paths.LOGIN}>Зарегистрироваться</Link>
+							<Link to={paths.LOGIN}><p>Зарегистрироваться</p></Link>
 							</ButtonLogin>
+							{showError && (<p style={{color:"red"}}> Ошибочка...</p>)}
 						<FormGroup>
-							<p>Уже есть аккаунт? <Link to={paths.LOGIN}>Войдите здесь</Link></p>
+							<p>Уже есть аккаунт? <Link to={paths.LOGIN}><p>Войдите здесь</p></Link></p>
 						</FormGroup>
                     </FormLogin>
 				</ModalBlock>

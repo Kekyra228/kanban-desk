@@ -52,8 +52,11 @@ export async function authorize({name,login,password}) {
               })
         }
     )
-    if (!response.ok) {
-        throw new Error ("ошибка")
+    if (response.status===400) {
+        throw new Error ("Пользователь уже существует")
+    }
+    else if(!response.ok) {
+        throw new Error ("Заполните поля")
     }
     const responseData = await response.json()
     return responseData

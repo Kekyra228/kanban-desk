@@ -245,8 +245,10 @@ padding: 10px 14px 10px 14px;
   background: #565EEF;
   border: none;
   outline: none;
-  color: #FFFFFF;
 
+& p {
+  color: #FFFFFF;
+}
   &:hover {
     background-color: #33399b;
     color: #fff;
@@ -341,8 +343,10 @@ padding: 10px 14px 10px 14px;
   background: #565EEF;
   border: none;
   outline: none;
+ 
+& p{
   color: #FFFFFF;
-
+}
   &:hover {
     background-color: #33399b;
     color: #fff;

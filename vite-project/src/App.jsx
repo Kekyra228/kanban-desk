@@ -1,5 +1,5 @@
 
-import './App.css'
+
 import { GlobalStyle } from './components/Global.styled'
 import AppRoutes from './Routes'
 

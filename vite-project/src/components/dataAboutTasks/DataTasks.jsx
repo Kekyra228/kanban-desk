@@ -134,14 +134,7 @@ const editItem = async () => {
 							<PopBrowseContentTheme>
 							
 							</PopBrowseContentTheme>
-							{/* <PopBrowseBtn>
-								<PopBrowseBtnGroup>
-									<PopBrowseBtnEdit onClick={openEditMode}>Редактировать задачу</PopBrowseBtnEdit>
-									<PopBrowseBtnDelete onClick={deleteItem}>Удалить задачу</PopBrowseBtnDelete>
-								</PopBrowseBtnGroup>
-								<PopBrowseBtnClose><Link to ={paths.MAIN} >Закрыть</Link></PopBrowseBtnClose>
-							</PopBrowseBtn> */}
-
+				
 							{isEdit ? 
 							
 								<PopBrowseEditMode>
@@ -150,7 +143,7 @@ const editItem = async () => {
 									<PopBrowseBtnEditUndo onClick={openEditMode}>Отменить</PopBrowseBtnEditUndo>
 									<PopBrowseBtnEditDelete onClick={deleteItem}>Удалить задачу</PopBrowseBtnEditDelete>
 								</PopBrowseEditBtnGroup>
-								<PopBrowseBtnEditClose><Link to ={paths.MAIN} >Закрыть</Link></PopBrowseBtnEditClose>
+								<PopBrowseBtnEditClose><Link to ={paths.MAIN} > <p>Закрыть</p></Link></PopBrowseBtnEditClose>
 							</PopBrowseEditMode> : 
 							
 							<>
@@ -159,7 +152,7 @@ const editItem = async () => {
 								<PopBrowseBtnEdit onClick={openEditMode}>Редактировать задачу</PopBrowseBtnEdit>
 								<PopBrowseBtnDelete onClick={deleteItem}>Удалить задачу</PopBrowseBtnDelete>
 							</PopBrowseBtnGroup>
-							<PopBrowseBtnClose><Link to ={paths.MAIN} >Закрыть</Link></PopBrowseBtnClose>
+							<PopBrowseBtnClose><Link to ={paths.MAIN} > <p>Закрыть</p></Link></PopBrowseBtnClose>
 						</PopBrowseBtn>
 						</>
 							}
@@ -173,12 +166,3 @@ const editItem = async () => {
 
 export default DataTask
 
-		// <PopBrowseStatusTheme> 
-											
-		// <input
-		// type="radio" 
-		// name="status"
-		// value = {status}
-		// onChange={(e) => setEditingTask({...editingTask, status: e.target.value})}
-		// />
-									// 	</PopBrowseStatusTheme>

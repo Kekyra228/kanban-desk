@@ -42,8 +42,10 @@ export const ButtonLogin = styled.button`
   line-height: 21px;
   font-weight: 500;
   letter-spacing: -0.14px;
-  color: #FFFFFF;
-  
+
+  & p {
+    color: #FFFFFF;
+  }
   &:hover {
     width: 100%;
   height: 100%;

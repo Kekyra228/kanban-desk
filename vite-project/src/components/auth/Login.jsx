@@ -10,10 +10,13 @@ function Login() {
 
     const {createUser} = useUserContext()
 
+    const [showError, setShowError] = useState(null)
+
+	const nav = useNavigate()
+
     const [login, setUserLogin] = useState("")
     const [password, setPassword] = useState("")
    
-
     const loginUser = async () => {
 
         await logon({ login, password}).then((responseData)=>{createUser(responseData.user)
@@ -27,7 +30,7 @@ function Login() {
                 alert(error.message)
             }
         })
-     
+        nav(paths.MAIN)
       }
 
 
@@ -60,12 +63,12 @@ function Login() {
                         </ModalInput>
 
                         <LoginBtn type="button" onClick={loginUser}>
-                            <Link to ={paths.MAIN}> Войти </Link>
+                           <p>Войти</p>
                         </LoginBtn>
-                        {/* <p style={{color:"red"}}>{showErrorLogin}</p> */}
+                       
 						<FormGroup>
 							<p>Нужно зарегистрироваться?</p>
-							<Link to={paths.REGISTER}>Регистрируйся здесь</Link>
+							<Link to={paths.REGISTER}><p>Регистрируйся здесь</p></Link>
 						</FormGroup>
                     </FormLogin>
                 </ModalBlock>
