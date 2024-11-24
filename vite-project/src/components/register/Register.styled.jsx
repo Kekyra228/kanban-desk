@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ContainerSignin = styled.div`
-      display: block;
+  display: block;
   width: 100vw;
   min-height: 100vh;
   margin: 0 auto;
-`
+`;
 
 export const Modal = styled.div`
   width: 100%;
@@ -16,20 +16,20 @@ export const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const FormLogin = styled.form`
-      width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const ButtonLogin = styled.button`
   width: 100%;
   height: 30px;
-  background-color: #565EEF;
+  background-color: #76c043;
   border-radius: 4px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -44,14 +44,14 @@ export const ButtonLogin = styled.button`
   letter-spacing: -0.14px;
 
   & p {
-    color: #FFFFFF;
+    color: #ffffff;
   }
   &:hover {
     width: 100%;
-  height: 100%;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 100%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-`
+`;
